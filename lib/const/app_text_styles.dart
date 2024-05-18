@@ -10,6 +10,6 @@ class AppTextStyles {
       TextStyle(color: AppColors.whiteFEFFFE, fontSize: 20,fontWeight: FontWeight.bold);
   static TextStyle get blue_20Bold =>
       TextStyle(color: AppColors.blue390191, fontSize: 20,fontWeight: FontWeight.bold);
-      static  TextStyle get red_15 => TextStyle(color: AppColors.redFE2E44,fontSize: 15);
+      static  TextStyle get redFE2E44_15 => TextStyle(color: AppColors.redFE2E44,fontSize: 15);
 
 }

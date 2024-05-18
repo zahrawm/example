@@ -1,6 +1,10 @@
+import 'package:grocery_app/provider/login_provider.dart';
+import 'package:grocery_app/provider/reset_password_provider.dart';
+import 'package:grocery_app/provider/signup_provider.dart';
 import 'package:grocery_app/screen/login_screen.dart';
 import 'package:grocery_app/screen/reset_password_screen.dart';
 import 'package:grocery_app/screen/sign_up_screen.dart';
+import 'package:provider/provider.dart';
 
 import 'all_imports.dart';
 
@@ -13,19 +17,26 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      scaffoldMessengerKey: SnackBarHelper.scaffoldMessengerKey,
-      title: AppStrings.title,
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
+    return MultiProvider(
+      providers: [
+        ChangeNotifierProvider(create: (_)=> LoginProvider()),
+        ChangeNotifierProvider(create: (_)=> SignupProvider()),
+        ChangeNotifierProvider(create: (_)=> ResetPasswordProvider()),
+      ],
+      child: MaterialApp(
+        scaffoldMessengerKey: SnackBarHelper.scaffoldMessengerKey,
+        title: AppStrings.title,
+        theme: ThemeData(
+          primarySwatch: Colors.blue,
+        ),
+        initialRoute:LoginScreen.routeName ,
+        routes: {
+          LoginScreen.routeName: (_)=>const LoginScreen(),
+          SignUpScreen.routeName: (_)=>const SignUpScreen(),
+          ResetPasswordScreen.routeName: (_)=>const ResetPasswordScreen(),
+      
+        },
       ),
-      initialRoute:LoginScreen.routeName ,
-      routes: {
-        LoginScreen.routeName: (_)=>const LoginScreen(),
-        SignUpScreen.routeName: (_)=>const SignUpScreen(),
-        ResetPasswordScreen.routeName: (_)=>const ResetPasswordScreen(),
-
-      },
     );
   }
 }

@@ -23,12 +23,14 @@ class LoginScreen extends StatelessWidget {
                 controller: TextEditingController(),
                 hintText: AppStrings.email,
                 iconData: Icons.email,
+                errorMessage: provider.emailError,
               ),
               SizedBoxHelper.sizedBox10,
               CustomTextField(
                 controller: TextEditingController(),
                 hintText: AppStrings.password,
                 iconData: Icons.password,
+                errorMessage: provider.passwordError,
               ),
               SizedBoxHelper.sizedBox10,
               CustomButtonWidget(
