@@ -9,14 +9,15 @@ class ScreenBackground extends StatelessWidget {
     return Scaffold(
       backgroundColor: AppColors.whiteFEFFFE,
       body: SingleChildScrollView(
-        child: SizedBox(
-          height: MediaQuery.of(context).size.height,
+       // child: SizedBox(
+        //  height: MediaQuery.of(context).size.height,
           child: Column(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Padding(
                 padding:
-                    EdgeInsets.only(left: AppDimens.px20, right: AppDimens.px20,top: MediaQuery.of(context).padding.top),
+                    EdgeInsets.only(left: AppDimens.px20, right: AppDimens.px20,
+                    top: MediaQuery.of(context).padding.top),
                 child: Column(
                   children: children,
                 ),
@@ -25,7 +26,7 @@ class ScreenBackground extends StatelessWidget {
             ],
           ),
         ),
-      ),
+      
     );
   }
 }

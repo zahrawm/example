@@ -1,10 +1,12 @@
+
 import 'package:grocery_app/provider/login_provider.dart';
-import 'package:grocery_app/provider/reset_password_provider.dart';
-import 'package:grocery_app/provider/signup_provider.dart';
+import 'package:grocery_app/provider/reset_provider.dart';
+import 'package:grocery_app/provider/sign_up_provider.dart';
 import 'package:grocery_app/screen/login_screen.dart';
 import 'package:grocery_app/screen/reset_password_screen.dart';
 import 'package:grocery_app/screen/sign_up_screen.dart';
 import 'package:provider/provider.dart';
+
 
 import 'all_imports.dart';
 
@@ -19,11 +21,13 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiProvider(
       providers: [
-        ChangeNotifierProvider(create: (_)=> LoginProvider()),
-        ChangeNotifierProvider(create: (_)=> SignupProvider()),
-        ChangeNotifierProvider(create: (_)=> ResetPasswordProvider()),
+        ChangeNotifierProvider(create: (_) => LoginProvider()),
+         ChangeNotifierProvider(create: (_) => SignUpProvider()),
+          ChangeNotifierProvider(create: (_) => ResetProvider()),
+
       ],
       child: MaterialApp(
+        debugShowCheckedModeBanner: false,
         scaffoldMessengerKey: SnackBarHelper.scaffoldMessengerKey,
         title: AppStrings.title,
         theme: ThemeData(

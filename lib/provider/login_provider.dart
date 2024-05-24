@@ -1,15 +1,27 @@
-
 import 'package:grocery_app/all_imports.dart';
+import 'package:grocery_app/helper/validation_helper.dart';
 
-class  LoginProvider extends ChangeNotifier{
+class LoginProvider extends ChangeNotifier{
   TextEditingController emailController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
 
-  /// creating a getter for Email
   String _emailError = "";
-  String get  emailError => _emailError;
+  String get emailError => _emailError;
 
-   /// creating a getter for Email
   String _passwordError = "";
-  String get  passwordError => _passwordError;
+  String get passwordError => _passwordError;
+
+  bool _obscureText =  true;
+  bool get obscureText => _obscureText;
+  updateObscureText(){
+    _obscureText =! obscureText;
+    notifyListeners();
+  }
+
+  validateForm(){
+    _emailError  = ValidationHelper.validateEmail(emailController.text);
+    _passwordError  = ValidationHelper.validatePassword(passwordController.text);
+    notifyListeners();
+
+  }
 }

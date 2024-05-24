@@ -11,7 +11,7 @@ class LoginScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Consumer<LoginProvider>(
-      builder: (context, provider, _) {
+      builder: (context,provider, _) {
         return ScreenBackground(
             children: [
               SizedBoxHelper.sizedBox20,
@@ -31,11 +31,18 @@ class LoginScreen extends StatelessWidget {
                 hintText: AppStrings.password,
                 iconData: Icons.password,
                 errorMessage: provider.passwordError,
+                obscureText: provider.obscureText,
+                suffixIcon: IconButton(onPressed: (){
+                  provider.obscureText;
+                }, icon: Icon(provider.obscureText?
+                Icons.remove_red_eye:Icons.visibility_off)),
               ),
               SizedBoxHelper.sizedBox10,
               CustomButtonWidget(
                 title: AppStrings.login,
-                onTap: () {},
+                onTap: () {
+                  provider.validateForm();
+                },
               ),
               SizedBoxHelper.sizedBox10,
               InkWell(

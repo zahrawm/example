@@ -1,5 +1,5 @@
 import 'package:grocery_app/all_imports.dart';
-import 'package:grocery_app/provider/signup_provider.dart';
+import 'package:grocery_app/provider/sign_up_provider.dart';
 import 'package:grocery_app/widget/image_picker_widget.dart';
 import 'package:grocery_app/widget/screen_background.dart';
 import 'package:provider/provider.dart';
@@ -10,43 +10,58 @@ class SignUpScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Consumer<SignupProvider>(
-      builder: (context,provider,_) {
+    return Consumer<SignUpProvider>(
+      builder: (context, provider, _) {
         return ScreenBackground(
             children: [
-              ImagePickerWidget(),
+              ImagePickerWidget(
+                errorMessage: provider.profilemageError,
+                getProfileImage: provider.getProfileImage,
+                file: provider.selectedProfileImage,
+              ),
               CustomTextField(
                 controller: provider.userNameController,
                 hintText: AppStrings.username,
                 iconData: Icons.person,
-                errorMessage: provider.usernameError,
+                errorMessage: provider.userNameError,
               ),
-              SizedBoxHelper.sizedBox10,
+              
               CustomTextField(
                 controller: provider.emailController,
                 hintText: AppStrings.email,
                 iconData: Icons.email,
                 errorMessage: provider.emailError,
               ),
-              SizedBoxHelper.sizedBox10,
+              
               CustomTextField(
                 controller: provider.passwordController,
-                
                 hintText: AppStrings.password,
                 iconData: Icons.password,
                 errorMessage: provider.passwordError,
+                  obscureText: provider.obscureText,
+                suffixIcon: IconButton(onPressed: (){
+                  provider.obscureText;
+                }, icon: Icon(provider.obscureText?
+                Icons.remove_red_eye:Icons.visibility_off)),
               ),
-              SizedBoxHelper.sizedBox10,
+              
               CustomTextField(
                 controller: TextEditingController(),
                 hintText: AppStrings.confirmPassword,
                 iconData: Icons.password,
                 errorMessage: provider.confirmedPasswordError,
+                  obscureText: provider.obscureText,
+                suffixIcon: IconButton(onPressed: (){
+                  provider.obscureText;
+                }, icon: Icon(provider.obscureText?
+                Icons.remove_red_eye:Icons.visibility_off)),
               ),
-              SizedBoxHelper.sizedBox10,
+          
               CustomButtonWidget(
                 title: AppStrings.signUp,
-                onTap: () {},
+                onTap: () {
+                  provider.validateForm();
+                },
               ),
               SizedBoxHelper.sizedBox10,
               InkWell(

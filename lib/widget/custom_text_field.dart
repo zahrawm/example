@@ -67,8 +67,9 @@ class CustomTextField extends StatelessWidget {
             ],
           ),
         ),
-      if(errorMessage.isEmpty)
-      Text(errorMessage, style: AppTextStyles.redFE2E44_15,)
+     if(errorMessage.isEmpty)
+      Text("errorMessage", style: AppTextStyles.redFE2E44_15),
+      SizedBoxHelper.sizedBox10,
       ],
     );
   }

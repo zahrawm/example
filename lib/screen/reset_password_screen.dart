@@ -1,5 +1,5 @@
 import 'package:grocery_app/all_imports.dart';
-import 'package:grocery_app/provider/reset_password_provider.dart';
+import 'package:grocery_app/provider/reset_provider.dart';
 import 'package:grocery_app/widget/screen_background.dart';
 import 'package:provider/provider.dart';
 
@@ -9,8 +9,8 @@ class ResetPasswordScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Consumer<ResetPasswordProvider>(
-      builder: (context,provider, _) {
+    return Consumer<ResetProvider>(
+      builder: (context,provider,_) {
         return ScreenBackground(
           children: [
             SizedBoxHelper.sizedBox100,
@@ -19,7 +19,7 @@ class ResetPasswordScreen extends StatelessWidget {
             ),
             SizedBoxHelper.sizedBox20,
             CustomTextField(
-              controller:provider.emailController,
+              controller: provider.emailController,
               hintText: AppStrings.email,
               iconData: Icons.email,
               errorMessage: provider.emailError,
