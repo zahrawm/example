@@ -60,7 +60,8 @@ class SignUpScreen extends StatelessWidget {
               CustomButtonWidget(
                 title: AppStrings.signUp,
                 onTap: () {
-                  provider.validateForm();
+                //  provider.validateForm();
+                provider.signUp();
                 },
               ),
               SizedBoxHelper.sizedBox10,
